@@ -3,13 +3,13 @@
 <head>
 <script>
 function clickCounter() {
-  if (typeof(Storage) !== "undefined") {
-    if (localStorage.clickcount) {
-      localStorage.clickcount = Number(localStorage.clickcount)+1;
-    } else {
-      localStorage.clickcount = 1;
+  if (typeof(Storage) !== "undefined") {//ストレージ機能が提供されているか
+    if (localStorage.clickcount) {//localStorageにclickcountがあれば
+      localStorage.clickcount = Number(localStorage.clickcount)+1;//数字に変換して1増やして戻す
+    } else {//初めてアクセスしたとき
+      localStorage.clickcount = 1;//1で初期化
     }
-    document.getElementById("result").innerHTML = "クリックした回数は " + localStorage.clickcount + " 回";
+    document.getElementById("result").innerHTML = "クリックした回数は " + localStorage.clickcount + " 回";//documentオブジェクトのgetElementByIdを呼び出す(resultというidを持つidの中身に文字列を入れる）
   } else {
     document.getElementById("result").innerHTML = "このブラウザは、Web Storage APIをサポートしていません。";
   }
@@ -18,8 +18,8 @@ function clickCounter() {
 </head>
 <body>
   <h1>localStorage の例 </h1>
-<p><button onclick="clickCounter()" type="button">クリック！</button></p>
-<div id="result"></div>
+<p><button onclick="clickCounter()" type="button">クリック！</button></p><!--buttonにonclickというイベントが起きると、clickCounterという関数を呼び出す-->
+<div id="result"></div><!--divタグはpタグのモダンな形。idにresultという値を設定する-->
 <p>クリックすると回数が増えます。</p>
 <p>タブかウィンドウを閉じてください。開きなおしてください。回数は変わっていないはずです。</p>
 
