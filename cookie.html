@@ -2,11 +2,11 @@
 <html>
 <head>
 <script>
-function setCookie(cname,cvalue,exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  var expires = "expires=" + d.toGMTString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+function setCookie(cname,cvalue,exdays) {//使いたいクッキーの名前、入れたい値、何日間有効のクッキーとしたいか
+  var d = new Date();//組み込みクラスDateを使って、この瞬間のオブジェクトを表すものを作る
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));//ある時点からの値をもらってきて、そこにexdays日分足して、その値をdにセット
+  var expires = "expires=" + d.toGMTString();//"expires=" + 全世界共通の表現 （このクッキーはいつまで有効か）
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";//サーバーのどこで使っていいか
 }
 
 function getCookie(cname) {
@@ -30,7 +30,7 @@ function checkCookie() {
   console.log(user);
   if (user != "" ) {
     alert("また見てくれてありがとう！" + user);
-  } else {
+  } else {//クッキーがない場合
      user = prompt("名前を教えてください:","");
      if (user != "" && user != null) {
        setCookie("username", user, 30);
@@ -50,7 +50,7 @@ function delCookie()
   <h1> Cookie の例 </h1>
 <body>
 <div style="background-color : #CCC;">
-   <input type="button" value="クッキー判定" onclick="checkCookie()">
+   <input type="button" value="クッキー判定" onclick="checkCookie()"><!--ボタンタグを使わない例-->
   <input type="button" value="クッキー削除" onclick="delCookie()">
 </div>
 
